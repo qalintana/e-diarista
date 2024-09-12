@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{adminlte3 :: layout(~{::title}, ~{::main}, _, _)}">
+
+<head>
+
+    <title>Formulário de Serviço</title>
+</head>
+
+<body>
+    <main>
+        <div class="row">
+            <div class="col">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <div class="card-title">
+                            Formulário Serviço
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <form method="post" th:object="${servico}">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="nome">Nome</label>
+                                        <input type="text" class="form-control" th:field="*{nome}">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
