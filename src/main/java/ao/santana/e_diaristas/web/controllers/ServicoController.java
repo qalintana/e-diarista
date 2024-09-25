@@ -59,7 +59,6 @@ public class ServicoController {
         if (result.hasErrors()) {
             return "admin/servico/form";
         }
-
         service.editar(form, id);
         return "redirect:/admin/servicos";
     }
