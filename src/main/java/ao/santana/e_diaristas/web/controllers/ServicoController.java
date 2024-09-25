@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ao.santana.e_diaristas.core.enums.Icone;
+import ao.santana.e_diaristas.web.dtos.FlashMessage;
 import ao.santana.e_diaristas.web.dtos.ServicoForm;
 import ao.santana.e_diaristas.web.services.WebServiceServico;
 import jakarta.validation.Valid;
@@ -39,33 +41,41 @@ public class ServicoController {
     }
 
     @PostMapping("/cadastrar")
-    public String cadastrar(@Valid @ModelAttribute("form") ServicoForm form, BindingResult result) {
+    public String cadastrar(@Valid @ModelAttribute("form") ServicoForm form, BindingResult result,
+            RedirectAttributes attrs) {
         if (result.hasErrors()) {
             return "admin/servico/form";
         }
         service.cadastrar(form);
-       return "redirect:/admin/servicos";
+        attrs.addFlashAttribute("alert",
+                new FlashMessage("alert-success", "Serviço Cadastrado com sucesso"));
+        return "redirect:/admin/servicos";
     }
 
     @GetMapping("/{id}/editar")
     public ModelAndView editar(@PathVariable Long id) {
-        var modelandview = new ModelAndView("admin/servico/form");        
+        var modelandview = new ModelAndView("admin/servico/form");
         modelandview.addObject("form", service.buscarPorId(id));
         return modelandview;
     }
 
     @PostMapping("/{id}/editar")
-    public String editar(@PathVariable Long id, @Valid @ModelAttribute("form") ServicoForm form, BindingResult result) {
+    public String editar(@PathVariable Long id, @Valid @ModelAttribute("form") ServicoForm form, BindingResult result,
+            RedirectAttributes attrs) {
         if (result.hasErrors()) {
             return "admin/servico/form";
         }
         service.editar(form, id);
+        attrs.addFlashAttribute("alert",
+                new FlashMessage("alert-success", "Serviço atualizado com sucesso"));
         return "redirect:/admin/servicos";
     }
 
     @GetMapping("/{id}/excluir")
-    public String excluir(@PathVariable Long id) {
-       service.excluirPorId(id);
+    public String excluir(@PathVariable Long id, RedirectAttributes attrs) {
+        service.excluirPorId(id);
+        attrs.addFlashAttribute("alert",
+                new FlashMessage("alert-warning", "Serviço Eliminado com sucesso"));
         return "redirect:/admin/servicos";
     }
 
