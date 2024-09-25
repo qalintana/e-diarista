@@ -16,7 +16,7 @@ Projeto desenvolvido durante o treinamento da [TreinaWeb](http://treinaweb.com.b
 
 ## Requisitos
 - Java 17
-- Maven 3.8
+- Maven 4.0.0
 
 ## Como testar este projeto na minha máquina?
 
