@@ -23,7 +23,7 @@ Projeto desenvolvido durante o treinamento da [TreinaWeb](http://treinaweb.com.b
 Clone este repositório e entre na pasta do projeto.
 
 ```sh
-git clone https://github.com/qalintana/e-diarista.**git**
+git clone https://github.com/qalintana/e-diarista.git
 cd e-diaristas
 ```
 
