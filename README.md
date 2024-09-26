@@ -30,7 +30,7 @@ cd e-diaristas
 Atualize as configurações de acesso ao banco de dados no arquivo [application.properties](src/main/resources/application.properties)
 ```properties
 
-spring.datasource.url=jdbc:mysql://host:porta/dbname?useTimezone=true&serverTimezone=Africa/Luanda
+spring.datasource.url=jdbc:mysql://host:porta/banco_de_dados?useTimezone=true&serverTimezone=Africa/Luanda
 spring.datasource.username=usuario
 spring.datasource.password=senha
 
@@ -42,3 +42,10 @@ spring.jpa.show-sql=true
 #thymeleaf
 spring.thymeleaf.cache=false
 ```
+
+Execute o projeto através do Maven
+```sh
+mvn spring-boot:run
+```
+
+Acesse a aplicação em [http://localhost:8080/admin/servicos](http://localhost:8080/admin/servicos).
