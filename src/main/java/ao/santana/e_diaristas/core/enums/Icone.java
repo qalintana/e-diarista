@@ -8,7 +8,7 @@ public enum Icone {
 
     private String nome;
 
-    private Icone(String nome){
+    Icone(String nome){
         this.nome = nome;
     }
 
